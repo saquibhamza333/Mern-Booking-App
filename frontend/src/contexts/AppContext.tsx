@@ -12,10 +12,11 @@ type AppContext ={
 }
 
  const AppContext = React.createContext<AppContext|undefined>(undefined);
- export const AppContextProvider = ({children,}:{children:React.ReactNode})=>{
+ export const AppContextProvider = ({children}:{children:React.ReactNode})=>{
       const [toast, setToast] = useState<ToastMessage | undefined>(undefined);
-    <AppContext.Provider value={{
-        showToast:(toastMessage)=>console.log(toastMessage)
+   return ( 
+   <AppContext.Provider value={{
+        showToast:(toastMessage)=>setToast(toastMessage)
     }}>
         {
             toast&& (
@@ -26,8 +27,9 @@ type AppContext ={
         }
         {children}
     </AppContext.Provider>
- }
+ )}
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAppContext = ()=>{
     const context = useContext(AppContext);
     return context as AppContext;

@@ -2,6 +2,7 @@ import {useForm} from 'react-hook-form'
 import * as apiClient from '../api-client'
 import { useMutation } from 'react-query';
 import { useAppContext } from '../contexts/AppContext';
+import { useNavigate } from 'react-router-dom';
 
 export type RegisterFormData = {
   firstName: string,
@@ -11,18 +12,22 @@ export type RegisterFormData = {
   confirmPassword: string,
 }
 
-const register = () => {
+const Register = () => {
+  const navigate =useNavigate();
   const {showToast}=useAppContext();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+
   const {register,watch,handleSubmit,formState:{errors}} = useForm<RegisterFormData>();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+  
   const mutation = useMutation(apiClient.register,
     {
-      onSuccess:()=>{
-       showToast:({message: "Registration Success",type:'SUCCESS'});
+      onSuccess: ()=>{
+       
+       showToast({message: "Registration Success",type:'SUCCESS'});
+       navigate('/');
       },
       onError:(error:Error)=>{
-              showToast:({message: error.message,type:'ERROR'});
+              // eslint-disable-next-line no-unused-labels
+              showToast({message: error.message,type:'ERROR'});
 
       }
       
@@ -112,4 +117,4 @@ const register = () => {
   )
 }
 
-export default register
+export default Register

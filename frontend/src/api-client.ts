@@ -12,6 +12,7 @@ export const register = async (formData:RegisterFormData)=>{
             'Content-Type': 'application/json',
             
         },
+        credentials:'include',
         body: JSON.stringify(formData),
     }
 
