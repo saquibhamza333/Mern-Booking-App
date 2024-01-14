@@ -36,11 +36,12 @@ const response = await fetch(`${API_BASE_URL}/api/auth/login`,
     },
     body: JSON.stringify(formData)
 });
+
 const body = await response.json();
 if(!response.ok){
-    throw new Error(body.mesaage)
+   
+    throw new Error(body.message)
 }
-console.log(body)
 return body;
 
 }
@@ -53,6 +54,7 @@ export const validateToken = async ()=>{
         throw new Error('Token Invalid');
 
     }
+
     return response.json();
 
 }
