@@ -18,7 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
             onSuccess: async ()=>{
                 
 
-                showToast({message:"SignIn Successfull",type:"SUCCESS"});
+                showToast({message:"Sign in Successfull!",type:"SUCCESS"});
                 await queryClient.invalidateQueries("validateToken");
                 navigate("/");
               
