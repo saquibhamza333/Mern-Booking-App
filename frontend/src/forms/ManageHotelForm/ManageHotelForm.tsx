@@ -32,6 +32,7 @@ const ManageHotelForm = ({onSave , isLoading}:Props) => {
     
     
     const formData = new FormData();
+    
       formData.append("name", formDataJson.name);
     formData.append("city", formDataJson.city);
     formData.append("country", formDataJson.country);
@@ -49,6 +50,7 @@ const ManageHotelForm = ({onSave , isLoading}:Props) => {
      Array.from(formDataJson.imageFiles).forEach((imageFile) => {
       formData.append(`imageFiles`, imageFile);
     });
+    
     onSave(formData);
 
 })
@@ -60,6 +62,7 @@ const ManageHotelForm = ({onSave , isLoading}:Props) => {
             <FacilitiesSection/>
             <GuestsSection/>
             <ImagesSection/>
+            
             <span className="flex justify-end">
               <button disabled = {isLoading} type="submit" className="p-2 bg-blue-600 text-white font-bold hover:bg-blue-500 text-xl disabled:bg-gray-500">{isLoading?"Saving":"Save"}</button>
             </span>
