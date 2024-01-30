@@ -1,7 +1,7 @@
 import { BsBuilding, BsMap } from "react-icons/bs";
 import { BiHotel, BiMoney, BiStar } from "react-icons/bi";
 import { Link } from "react-router-dom";
-import {HotelType} from "../../../backend/src/models/hotel";
+import {HotelType} from "../../../backend/src/shared/types";
 
 interface MyHotelCardProps {
   hotel: HotelType;
