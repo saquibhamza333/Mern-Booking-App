@@ -49,16 +49,13 @@ const Booking = () => {
     "fetchCurrentUser",
     apiClient.fetchCurrentUser
   );
-  console.log(`current user ${currentUser}`);
-  console.log( paymentIntentData);
 
   if (!hotel) {
-    return <>
-    </>;
+    return null;
   }
 
   return (
-    <div className="grid md:grid-cols-[1fr_2fr]">
+    <div className="grid grid-cols-1 md:grid-cols-[1fr,2fr] gap-4">
       <BookingDetailsSummary
         checkIn={search.checkIn}
         checkOut={search.checkOut}
@@ -80,8 +77,6 @@ const Booking = () => {
             paymentIntent={paymentIntentData}
           />
         </Elements>
-
-        
       )}
     </div>
   );
