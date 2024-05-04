@@ -16,7 +16,7 @@ type SearchContext = {
   ) => void;
 };
 
-const SearchContext = React.createContext<SearchContext | undefined>(undefined);
+export const SearchContext = React.createContext<SearchContext | undefined>(undefined);
 
 type SearchContextProviderProps = {
   children: React.ReactNode;

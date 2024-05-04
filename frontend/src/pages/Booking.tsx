@@ -49,9 +49,12 @@ const Booking = () => {
     "fetchCurrentUser",
     apiClient.fetchCurrentUser
   );
+  console.log(`current user ${currentUser}`);
+  console.log( paymentIntentData);
 
   if (!hotel) {
-    return <></>;
+    return <>
+    </>;
   }
 
   return (
@@ -64,6 +67,7 @@ const Booking = () => {
         numberOfNights={numberOfNights}
         hotel={hotel}
       />
+    
       {currentUser && paymentIntentData && (
         <Elements
           stripe={stripePromise}
@@ -76,6 +80,8 @@ const Booking = () => {
             paymentIntent={paymentIntentData}
           />
         </Elements>
+
+        
       )}
     </div>
   );

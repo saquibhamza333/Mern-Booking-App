@@ -16,47 +16,47 @@ const Detail = () => {
   );
 
   if (!hotel) {
-    return <></>;
+    return <div>Loading...</div>;
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <span className="flex">
-          {Array.from({ length: hotel.starRating }).map(() => (
-            <AiFillStar className="fill-yellow-400" />
-          ))}
-        </span>
-        <h1 className="text-3xl font-bold">{hotel.name}</h1>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {hotel.imageUrls.map((image) => (
-          <div className="h-[300px]">
-            <img
-              src={image}
-              alt={hotel.name}
-              className="rounded-md w-full h-full object-cover object-center"
-            />
+    <div className="container mx-auto px-4 py-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
+        <div className="lg:col-span-2 ">
+          <div className="flex items-center mb-4">
+            <span className="flex">
+              {Array.from({ length: hotel.starRating }).map((_, index) => (
+                <AiFillStar key={index} className="fill-yellow-400" />
+              ))}
+            </span>
+            <h1 className="text-3xl font-bold ml-2">{hotel.name}</h1>
           </div>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-2">
-        {hotel.facilities.map((facility) => (
-          <div className="border border-slate-300 rounded-sm p-3">
-            {facility}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+            {hotel.imageUrls.map((image, index) => (
+              <div key={index} className="w-full lg:w-auto">
+                <img
+                  src={image}
+                  alt={hotel.name}
+                  className="rounded-md w-full h-auto object-cover object-center"
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr]">
-        <div className="whitespace-pre-line">{hotel.description}</div>
-        <div className="h-fit">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-2 mt-8">
+            {hotel.facilities.map((facility, index) => (
+              <div key={index} className="border border-gray-300 rounded-sm p-3">
+                {facility}
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 whitespace-pre-line">{hotel.description}</div>
+        </div>
+        <div>
           <GuestInfoForm
             pricePerNight={hotel.pricePerNight}
             hotelId={hotel._id}
           />
+        
         </div>
       </div>
     </div>
